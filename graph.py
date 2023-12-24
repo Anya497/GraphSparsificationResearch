@@ -40,3 +40,10 @@ class Graph:
             for j, w in enumerate(mat[i]):
                 if w != 0:
                     self.vertices[i].add_desc((j, w))
+
+    def get_adj_mat(self):
+        adj_mat = np.zeros([self.N, self.N], dtype=np.int32)
+        for i, v in enumerate(self.vertices):
+            for desc in v.desc:
+                adj_mat[i][desc[0]] = 1
+        return adj_mat
